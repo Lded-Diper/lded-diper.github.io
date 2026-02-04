@@ -18,3 +18,5 @@ if(isEvening)
 {
     thing.textContent = 'Good Evening'
 }
+
+localStorage.setItem("It's a secret to everybody.", 'they nerfed my character in the game i play and i am not happy about it')
