@@ -1,6 +1,6 @@
 const hours = new Date().getHours() // get the current hour
 const todos = JSON.parse(localStorage.getItem('todo-list')) || []
-const todoList = document.querySelector('#todo-list')
+const todoList = document.querySelector('#todo-list-insert')
 const newItem = document.querySelector('#new-todo')
 const addNewItem = document.querySelector('#chud')
 addNewItem.addEventListener('click', () => {
