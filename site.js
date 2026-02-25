@@ -1,4 +1,25 @@
 const hours = new Date().getHours() // get the current hour
+const todos = JSON.parse(localStorage.getItem('todo-list')) || []
+const todoList = document.querySelector('#todo-list')
+const newItem = document.querySelector('#new-todo')
+const addNewItem = document.querySelector('#chud')
+addNewItem.addEventListener('click', () => {
+    todos.push({ text: newItem.value, completed: false })
+    localStorage.setItem('todo-list', JSON.stringify(todos))
+    todoList.innerHTML = ''
+    renderTodos()
+})
+
+console.log(todos)
+
+const renderTodos = () => {
+    todos.forEach((todo) => {
+    const li = document.createElement('li')
+    li.textContent = todo.text
+    todoList.append(li)
+})}
+
+renderTodos()
 
 const urls = [
     'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -20,7 +41,6 @@ const showImages = () => {
 }
 
 showImages()
-
 
 const isMorning = hours >= 4 && hours < 12 // is it morning?
 const isAfternoon = hours >= 12 && hours < 17 // is it afternoon?
