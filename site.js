@@ -15,6 +15,7 @@ const getRandomPokemon = async () => {
 
 const renderPokemon = async () => {
     const poke = await getRandomPokemon()
+    console.log(poke)
     const img = document.createElement('img')
     img.src = poke.front_default
     img.alt = poke.name
