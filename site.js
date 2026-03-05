@@ -3,6 +3,26 @@ const todos = JSON.parse(localStorage.getItem('todo-list')) || []
 const todoList = document.querySelector('#todo-list-insert')
 const newItem = document.querySelector('#new-todo')
 const addNewItem = document.querySelector('#chud')
+const pokemonImageLocation = document.querySelector('#pokemon')
+
+const getRandomPokemon = async () => {
+    const response =  await fetch('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 149 + 1))
+    const data = await response.json()
+    const { name, sprites } = data
+    return { name, front_default: sprites.front_default }
+}
+
+
+const renderPokemon = async () => {
+    const poke = await getRandomPokemon()
+    const img = document.createElement('img')
+    img.src = poke.front_default
+    img.alt = poke.name
+    pokemonImageLocation.append(img)
+}
+
+renderPokemon()
+
 addNewItem.addEventListener('click', () => {
     todos.push({ text: newItem.value, completed: false })
     localStorage.setItem('todo-list', JSON.stringify(todos))
